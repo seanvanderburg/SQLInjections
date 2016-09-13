@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MainAppPstatement {
 	public static String url = "jdbc:postgresql://127.0.0.1:5432/postgres?allowMultiQueries=true";
 	public static String gebruiker = "postgres";
-	public static String password = "boeing707";
+	public static String password = "";
 	private static Scanner menu;
 	private static Scanner nr;
 	private static Scanner pwd;
