@@ -23,7 +23,7 @@ public class MainApp {
 				break;
 
 			case 2:
-				getklas();
+				findClass();
 				break;
 
 			default:
@@ -147,17 +147,14 @@ public class MainApp {
 
 		nr = new Scanner(System.in);
 		System.out.println("Voer klas in:");
-		String klas = nr.nextLine();
-		System.out.println("Je hebt de volgende klas ingevoerd: " + klas);
+		String className = nr.nextLine();
+		System.out.println("Je hebt de volgende klas ingevoerd: " + className);
 
 		Statement stmt = (Statement) connection.createStatement();
-		sqlQuery = "SELECT * FROM student WHERE entered = 'ja' AND klas = '"
-				+ klas + "'";
+		sqlQuery = "SELECT * FROM student WHERE entered = 'yes' AND klas = '"
+				+ className + "'";
 
 		ResultSet results = stmt.executeQuery(sqlQuery);
-		System.out.println("----------------------------");
-		System.out.println("querying: " + sqlQuery);
-		System.out.println("----------------------------");
 		while(results.next()){
 			String studentId = results.getString("studentId");
 			String password = results.getString("password");
@@ -167,6 +164,5 @@ public class MainApp {
 			System.out.println("Student: " + studentId + " Wachtwoord: "+ password + " Naam: " + name + " Klas: "+ classansw + " Ingeschreven: " + entered);
 			
 		}
-		System.out.println("----------------------------");
 	}
 }
