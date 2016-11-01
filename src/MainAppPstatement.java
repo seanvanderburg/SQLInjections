@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MainAppPstatement {
 	public static String url = "jdbc:postgresql://127.0.0.1:5432/postgres?allowMultiQueries=true";
-	public static String gebruiker = "postgres";
+	public static String user = "postgres";
 	public static String password = "";
 	private static Scanner menu;
 	private static Scanner nr;
@@ -114,7 +114,7 @@ public class MainAppPstatement {
 		}
 	}
 
-	public static void getklas() throws SQLException {
+	public static void findClass() throws SQLException {
 		String sqlQuery = null;
 		System.out.println("-------- PostgreSQL "
 				+ "Check connection ----------------");
@@ -157,11 +157,11 @@ public class MainAppPstatement {
 
 		nr = new Scanner(System.in);
 		System.out.println("Voer klas in:");
-		String klas = nr.nextLine();
-		System.out.println("Je hebt de volgende klas ingevoerd: " + klas);
-		sqlQuery = "SELECT * FROM student WHERE ingeschreven = 'ja' AND klas = ?";
+		String className = nr.nextLine();
+		System.out.println("Je hebt de volgende klas ingevoerd: " + className);
+		sqlQuery = "SELECT * FROM student WHERE entered = 'yes' AND class = ?";
 		PreparedStatement stmt = connection.prepareStatement(sqlQuery);
-		stmt.setString(1, klas);
+		stmt.setString(1, className);
 		ResultSet results = stmt.executeQuery();
 		
 		ResultSetMetaData rsmd = results.getMetaData();
