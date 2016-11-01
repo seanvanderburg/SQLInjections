@@ -104,7 +104,7 @@ public class MainApp {
 		System.out.println("----------------------------");
 	}
 
-	public static void getklas() throws SQLException {
+	public static void findClass() throws SQLException {
 		String sqlQuery = null;
 		System.out.println("-------- PostgreSQL "
 				+ "Check connection ----------------");
@@ -151,7 +151,7 @@ public class MainApp {
 		System.out.println("Je hebt de volgende klas ingevoerd: " + klas);
 
 		Statement stmt = (Statement) connection.createStatement();
-		sqlQuery = "SELECT * FROM student WHERE ingeschreven = 'ja' AND klas = '"
+		sqlQuery = "SELECT * FROM student WHERE entered = 'ja' AND klas = '"
 				+ klas + "'";
 
 		ResultSet results = stmt.executeQuery(sqlQuery);
@@ -159,12 +159,12 @@ public class MainApp {
 		System.out.println("querying: " + sqlQuery);
 		System.out.println("----------------------------");
 		while(results.next()){
-			String studentnummer = results.getString("studentnummer");
-			String wachtwoord = results.getString("wachtwoord");
-			String naam = results.getString("naam");
-			String klasansw = results.getString("klas");
-			String ingeschreven = results.getString("ingeschreven");
-			System.out.println("Student: " + studentnummer + " Wachtwoord: "+ wachtwoord + " Naam: " + naam + " Klas: "+ klasansw + " Ingeschreven: " +ingeschreven);
+			String studentId = results.getString("studentId");
+			String password = results.getString("password");
+			String name = results.getString("name");
+			String classansw = results.getString("class");
+			String entered = results.getString("entered");
+			System.out.println("Student: " + studentId + " Wachtwoord: "+ password + " Naam: " + name + " Klas: "+ classansw + " Ingeschreven: " + entered);
 			
 		}
 		System.out.println("----------------------------");
