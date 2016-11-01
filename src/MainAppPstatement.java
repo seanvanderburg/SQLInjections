@@ -24,7 +24,7 @@ public class MainAppPstatement {
 				break;
 
 			case 2:
-				getklas();
+				findClass();
 				break;
 
 			default:
